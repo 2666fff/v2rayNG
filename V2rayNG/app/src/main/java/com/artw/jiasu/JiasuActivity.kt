@@ -1,5 +1,7 @@
 package com.artw.jiasu
 
+import android.content.res.ColorStateList
+import android.graphics.Color
 import android.net.VpnService
 import android.os.Bundle
 import android.text.TextUtils
@@ -40,6 +42,13 @@ class JiasuActivity : AppCompatActivity() {
         MMKV.mmkvWithID(
             MmkvManager.ID_MAIN,
             MMKV.MULTI_PROCESS_MODE
+        )
+    }
+
+    private val serverAdd by lazy {
+        MMKV.mmkvWithID(
+            MmkvManager.ID_MAIN,
+            MMKV.SINGLE_PROCESS_MODE
         )
     }
     private val settingsStorage by lazy {
@@ -129,7 +138,10 @@ class JiasuActivity : AppCompatActivity() {
         setupViewModelObserver()
         migrateLegacy()
 
-        importBatchConfig("vmess://ewoidiI6ICIyIiwKInBzIjogIjIzM3YyLmNvbV85MS4yNDUuMjU1Ljg2IiwKImFkZCI6ICI5MS4yNDUuMjU1Ljg2IiwKInBvcnQiOiAiNDYyNTMiLAoiaWQiOiAiMjY5NDQzNWQtNGI5My00MWE5LWI2Y2ItZjNlNjFiZjMyNGQ4IiwKImFpZCI6ICIwIiwKIm5ldCI6ICJ0Y3AiLAoidHlwZSI6ICJub25lIiwKImhvc3QiOiAiIiwKInBhdGgiOiAiIiwKInRscyI6ICIiCn0K")
+        if (!serverAdd.getBoolean("add",false)) {
+            importBatchConfig("vmess://ewoidiI6ICIyIiwKInBzIjogIuWFjei0uemmmea4rzUwME0iLAoiYWRkIjogIjkxLjI0NS4yNTUuODYiLAoicG9ydCI6ICI0NjI1MyIsCiJpZCI6ICIyNjk0NDM1ZC00YjkzLTQxYTktYjZjYi1mM2U2MWJmMzI0ZDgiLAoiYWlkIjogIjAiLAoibmV0IjogInRjcCIsCiJ0eXBlIjogIm5vbmUiLAoiaG9zdCI6ICIiLAoicGF0aCI6ICIiLAoidGxzIjogIiIKfQ==")
+            serverAdd.putBoolean("add",true)
+        }
     }
 
     private fun migrateLegacy() {
@@ -163,10 +175,12 @@ class JiasuActivity : AppCompatActivity() {
             adapter.isRunning = isRunning
             if (isRunning) {
                 binding.fab.setImageResource(R.drawable.ic_baseline_toggle_on_24)
+                binding.fab.backgroundTintList = ColorStateList.valueOf(applicationContext.resources.getColor(R.color.colorPrimary));
 //                binding.tvTestState.text = getString(R.string.connection_connected)
 //                binding.layoutTest.isFocusable = true
             } else {
                 binding.fab.setImageResource(R.drawable.ic_baseline_toggle_off_24)
+                binding.fab.backgroundTintList = ColorStateList.valueOf(applicationContext.resources.getColor(R.color.white));
 //                binding.tvTestState.text = getString(R.string.connection_not_connected)
 //                binding.layoutTest.isFocusable = false
             }

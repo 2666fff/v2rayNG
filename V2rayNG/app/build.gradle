@@ -15,8 +15,8 @@ android {
         minSdkVersion 21
         targetSdkVersion Integer.parseInt("$targetSdkVer")
         multiDexEnabled true
-        versionCode 212
-        versionName "1.0.2"
+        versionCode 1
+        versionName "1.0.0"
     }
 
     buildTypes {
@@ -108,6 +108,7 @@ dependencies {
     implementation 'com.blacksquircle.ui:editorkit:2.1.1'
     implementation 'com.blacksquircle.ui:language-base:2.1.1'
     implementation 'com.blacksquircle.ui:language-json:2.1.1'
+    implementation "com.android.billingclient:billing:$billing_version"
 }
 
 buildscript {

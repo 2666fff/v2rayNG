@@ -4,6 +4,7 @@
     xmlns:app="http://schemas.android.om/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app1="http://schemas.android.com/apk/res-auto"
     tools:context="com.artw.jiasu.JiasuActivity">
 
     <androidx.recyclerview.widget.RecyclerView
@@ -19,7 +20,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="24dp"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true"
+        android:layout_centerHorizontal="true"
         >
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -38,6 +39,8 @@
         android:clickable="true"
         android:focusable="true"
         app:layout_anchorGravity="bottom|right|end"
-        android:nextFocusLeft="@+id/recycler_view" />
+        android:nextFocusLeft="@+id/recycler_view"
+        app1:backgroundTint="@color/white"
+        />
     </com.github.jorgecastilloprz.FABProgressCircle>
 </RelativeLayout>
