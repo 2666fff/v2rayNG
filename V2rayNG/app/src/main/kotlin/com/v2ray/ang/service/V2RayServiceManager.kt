@@ -1,9 +1,6 @@
 package com.v2ray.ang.service
 
-import android.app.Notification
-import android.app.NotificationChannel
-import android.app.NotificationManager
-import android.app.PendingIntent
+import android.app.*
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
@@ -66,6 +63,24 @@ object V2RayServiceManager {
     private var mSubscription: Subscription? = null
     private var mNotificationManager: NotificationManager? = null
 
+    fun startV2Ray(context: Activity) {
+        if (settingsStorage?.decodeBool(AppConfig.PREF_PROXY_SHARING) == true) {
+            context.toast(R.string.toast_warning_pref_proxysharing_short)
+        }else{
+            context.toast(R.string.toast_services_start)
+        }
+        val intent = if (settingsStorage?.decodeString(AppConfig.PREF_MODE) ?: "VPN" == "VPN") {
+            Intent(context, V2RayVpnService::class.java)
+        } else {
+            Intent(context.applicationContext, V2RayProxyOnlyService::class.java)
+        }
+        if (Build.VERSION.SDK_INT > Build.VERSION_CODES.N_MR1) {
+            context.startForegroundService(intent)
+        } else {
+            context.startService(intent)
+        }
+    }
+
     fun startV2Ray(context: Context) {
         if (settingsStorage?.decodeBool(AppConfig.PREF_PROXY_SHARING) == true) {
             context.toast(R.string.toast_warning_pref_proxysharing_short)
@@ -73,7 +88,7 @@ object V2RayServiceManager {
             context.toast(R.string.toast_services_start)
         }
         val intent = if (settingsStorage?.decodeString(AppConfig.PREF_MODE) ?: "VPN" == "VPN") {
-            Intent(context.applicationContext, V2RayVpnService::class.java)
+            Intent(context, V2RayVpnService::class.java)
         } else {
             Intent(context.applicationContext, V2RayProxyOnlyService::class.java)
         }

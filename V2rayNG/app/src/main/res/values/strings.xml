@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">v2rayNG</string>
+    <string name="app_name">云纵加速</string>
     <string name="app_widget_name">Switch</string>
     <string name="app_tile_name">Switch</string>
     <string name="app_tile_first_use">First use of this feature, please use the app to add server</string>
@@ -176,29 +176,29 @@
     <string name="connection_connected">Connected, tap to check connection</string>
     <string name="connection_not_connected">Not connected</string>
 
+    <string name="title_pref_proxy_sharing_enabled">Proxy sharing</string>
+
+    <string name="summary_pref_proxy_sharing_enabled">Bind inbound to 0.0.0.0</string>
+
+    <string name="toast_warning_pref_proxysharing">Other devices can connect to proxy by your ip address through socks/http protocol\nHttp  Proxy: http://yourIP:10809\nSocks Proxy: socks(4/5)://yourIP:10808\nOnly enable in trusted network to avoid unauthorized connection</string>
+    <string name="toast_warning_pref_proxysharing_short">Proxy sharing enabled\nMake sure you are in a trusted network</string>
+    <string name="toast_malformed_josn">Config malformed</string>
     <string-array name="share_method">
         <item>QRcode</item>
         <item>Export to clipboard</item>
         <item>Export full configuration to clipboard</item>
     </string-array>
-
     <string-array name="routing_tag">
         <item>proxy URL or IP</item>
         <item>direct URL or IP</item>
         <item>blocked URL or IP</item>
     </string-array>
-
     <string-array name="routing_mode">
         <item>Global</item>
         <item>Bypassing the LAN address</item>
         <item>Bypass mainland address</item>
         <item>Bypassing LAN and mainland address</item>
     </string-array>
-    <string name="title_pref_proxy_sharing_enabled">Proxy sharing</string>
-    <string name="summary_pref_proxy_sharing_enabled">Bind inbound to 0.0.0.0</string>
-    <string name="toast_warning_pref_proxysharing">Other devices can connect to proxy by your ip address through socks/http protocol\nHttp  Proxy: http://yourIP:10809\nSocks Proxy: socks(4/5)://yourIP:10808\nOnly enable in trusted network to avoid unauthorized connection</string>
-    <string name="toast_warning_pref_proxysharing_short">Proxy sharing enabled\nMake sure you are in a trusted network</string>
-    <string name="toast_malformed_josn">Config malformed</string>
 
     <string-array name="mode_entries">
         <item>VPN</item>

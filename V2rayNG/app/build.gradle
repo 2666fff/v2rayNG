@@ -11,7 +11,7 @@ android {
     }
 
     defaultConfig {
-        applicationId "com.v2ray.ang"
+        applicationId "com.artw.jiasu"
         minSdkVersion 21
         targetSdkVersion Integer.parseInt("$targetSdkVer")
         multiDexEnabled true
